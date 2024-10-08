@@ -1,10 +1,17 @@
 package com.example;
 
-public class ConsoleLogger extends Logger {
+import com.example.LoggerRequest.LoggerType;
 
+public class ConsoleLogger extends Logger {
+    
     @Override
     public void log(LoggerRequest request) {
-        System.out.println(request.getMessage());
+        if(request.getLoggerType()==LoggerType.CONSOLE){
+            System.out.println("Request is handled by Console Logger!");
+            System.out.println(request.getMessage());
+        }else{
+            this.getNextHandler().log(request);
+        }
     }
 
 

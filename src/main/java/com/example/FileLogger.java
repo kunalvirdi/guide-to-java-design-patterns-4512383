@@ -5,9 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileLogger extends Logger {
-
+   
     @Override
     public void log(LoggerRequest request) {
+        System.out.println("Request is handled by File Logger!");
         try {
             var writer = new BufferedWriter(new FileWriter("src/main/resources/log.txt", true));
             writer.write(request.getMessage() + "\n");
